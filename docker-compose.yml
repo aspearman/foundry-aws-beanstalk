@@ -1,0 +1,25 @@
+version: '2.4'
+services:
+  foundry:
+    image: felddy/foundryvtt:0.7
+    container_name: foundry
+#    hostname: tbd
+    init: true
+    restart: "unless-stopped"
+    mem_limit: 200m
+    environment:
+      TZ: "Pacific/Auckland"
+#      PUID: tbd
+#      PGID: tbd # may not have an effect. See FOUNDRY_GID
+      TIMEZONE: "Pacific/Auckland"
+    volumes:
+      - ./foundry:/data
+    environment:
+#      - FOUNDRY_USERNAME=tbd
+#      - FOUNDRY_PASSWORD=tbd
+#      - FOUNDRY_ADMIN_KEY=tbd
+#      - FOUNDRY_PROXY_SSL=true
+#      - CONTAINER_PRESERVE_CONFIG=true
+      - FOUNDRY_UPNP=false
+    ports:
+      - "30000:30000"
