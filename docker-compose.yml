@@ -1,4 +1,4 @@
-version: '2.4'
+version: '3.8'
 services:
   foundry:
     image: felddy/foundryvtt:0.7
@@ -6,12 +6,11 @@ services:
 #    hostname: tbd
     init: true
     restart: "unless-stopped"
-    mem_limit: 200m
     environment:
-      TZ: "Pacific/Auckland"
-#      PUID: tbd
-#      PGID: tbd # may not have an effect. See FOUNDRY_GID
       TIMEZONE: "Pacific/Auckland"
+      TZ: "Pacific/Auckland"
+    #      PUID: tbd
+    #      PGID: tbd # may not have an effect. See FOUNDRY_GID
     volumes:
       - ./foundry:/data
     environment:
@@ -23,3 +22,8 @@ services:
       - FOUNDRY_UPNP=false
     ports:
       - "30000:30000"
+  simple-web:
+    image: yeasy/simple-web:latest
+    container_name: simple
+    ports:
+    - "8080:80"
