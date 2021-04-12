@@ -17,10 +17,8 @@ jobs:
         run: docker-compose config --quiet
       - name: Generate deployment.zip
         run: zip -r deployment.zip docker-compose.yml  # zip is unnecessary if only deploying a docker-compose.yml file to EB
-      - name: print GITHUB_RUN_ID
-        run: echo $GITHUB_RUN_ID
       - name: print GITHUB_RUN_NUMBER
-        run: echo $GITHUB_RUN_NUMBER
+        run: echo "GITHUB_RUN_NUMBER $GITHUB_RUN_NUMBER"
       - name: Deploy to Elastic Beanstalk
         if: ${{ false }}
         uses: einaregilsson/beanstalk-deploy@v14
