@@ -25,7 +25,7 @@ jobs:
       - name: print GITHUB_RUN_ID
         run: echo $GITHUB_RUN_ID
       - name: print GITHUB_RUN_NUMBER
-        run: echo ${{ env.GITHUB_RUN_NUMBER }}
+        run: echo $GITHUB_RUN_NUMBER
       - name: Deploy to Beanstalk
         if: ${{ false }}
         uses: einaregilsson/beanstalk-deploy@v14
