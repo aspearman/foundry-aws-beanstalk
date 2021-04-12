@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: Check-out commit
         uses: actions/checkout@v2
-#       - name: Validate docker-compose.yml file
-#         run: docker-compose config
+      - name: Validate docker-compose.yml
+        run: docker-compose config
 #       - name: Compress repo to .zip
 #         run: zip -r deployment.zip *
 #         env:
