@@ -14,7 +14,7 @@ jobs:
       - name: Check-out commit
         uses: actions/checkout@v2
       - name: Validate docker-compose.yml
-        run: docker-compose config
+        run: docker-compose config --quiet
 #       - name: Compress repo to .zip
 #         run: zip -r deployment.zip *
 #         env:
