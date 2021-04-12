@@ -23,7 +23,7 @@ jobs:
 #         uses: gerred/actions/current-time@master
 #         id: current-time
       - name: print GITHUB_RUN_ID
-        run: echo ${{ env.GITHUB_SHA_SHORT }}
+        run: echo $GITHUB_RUN_ID
       - name: print GITHUB_RUN_NUMBER
         run: echo ${{ env.GITHUB_RUN_NUMBER }}
       - name: Deploy to Beanstalk
