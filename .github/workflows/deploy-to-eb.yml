@@ -8,25 +8,20 @@ on:
       - '**.md'
 jobs:
   deploy:
-    name: Deploy to AWS Elastic Beanstalk
+    name: Deploy to Elastic Beanstalk
     runs-on: ubuntu-latest
     steps:
       - name: Check-out commit
         uses: actions/checkout@v2
       - name: Validate docker-compose.yml
         run: docker-compose config --quiet
-#       - name: Compress repo to .zip
-#         run: zip -r deployment.zip *
-#         env:
-#           VARIABLE: ${{ secrets.VARIABLE }}
-#       - name: Get timestamp  # use GITHUB_RUN_ID or GITHUB_RUN_NUMBER instead
-#         uses: gerred/actions/current-time@master
-#         id: current-time
+      - name: Generate deployment.zip
+        run: zip -r deployment.zip docker-compose.yml  # zip is unnecessary if only deploying a docker-compose.yml file to EB
       - name: print GITHUB_RUN_ID
         run: echo $GITHUB_RUN_ID
       - name: print GITHUB_RUN_NUMBER
         run: echo $GITHUB_RUN_NUMBER
-      - name: Deploy to Beanstalk
+      - name: Deploy to Elastic Beanstalk
         if: ${{ false }}
         uses: einaregilsson/beanstalk-deploy@v14
         with:
@@ -39,4 +34,3 @@ jobs:
           version_description: ${{ github.SHA }}
           deployment_package: deployment.zip
           wait_for_deployment: true
-        
