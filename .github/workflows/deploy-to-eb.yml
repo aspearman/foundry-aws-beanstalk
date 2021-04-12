@@ -1,0 +1,42 @@
+name: Deploy to AWS Elastic Beanstalk
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+jobs:
+  deploy:
+    name: Deploy to AWS Elastic Beanstalk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check-out commit
+        uses: actions/checkout@v2
+#       - name: Validate docker-compose.yml file
+#         run: docker-compose config
+#       - name: Compress repo to .zip
+#         run: zip -r deployment.zip *
+#         env:
+#           VARIABLE: ${{ secrets.VARIABLE }}
+#       - name: Get timestamp  # use GITHUB_RUN_ID or GITHUB_RUN_NUMBER instead
+#         uses: gerred/actions/current-time@master
+#         id: current-time
+      - name: print GITHUB_RUN_ID
+        run: echo "GITHUB_RUN_ID: $GITHUB_RUN_ID"
+      - name: print GITHUB_RUN_NUMBER
+        run: echo "GITHUB_RUN_NUMBER: $GITHUB_RUN_NUMBER"
+      - name: Deploy to Beanstalk
+        if: ${{ false }}
+        uses: einaregilsson/beanstalk-deploy@v14
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: ap-southeast-2
+          application_name: tbd
+          environment_name: tbd-env
+          version_label: "tbd-${{ steps.format-time.outputs.replaced }}"
+          version_description: ${{ github.SHA }}
+          deployment_package: deployment.zip
+          wait_for_deployment: true
+        
