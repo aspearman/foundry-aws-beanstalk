@@ -26,7 +26,7 @@ jobs:
           region: ap-southeast-2
           application_name: foundryvtt
           environment_name: Foundryvtt-env
-          version_label: $GITHUB_RUN_NUMBER
+          version_label: ${{ github.run_number }}
           version_description: ${{ github.SHA }}
           deployment_package: deployment.zip
           wait_for_deployment: true
