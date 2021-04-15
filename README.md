@@ -1,4 +1,2 @@
-# Gaming Deployment
-This repository contains the necessary infrastructure-as-code files to deploy the following games to the cloud:
-
-* [Foundry Virtual Tabletop](https://github.com/felddy/foundryvtt-docker)
+# Foundry VTT on AWS Elastic Beanstalk
+This repository contains the necessary infrastructure-as-code files and pipelines to deploy [Foundry Virtual Tabletop](https://github.com/felddy/foundryvtt-docker) to Elastic Beanstalk using Docker compose. 
