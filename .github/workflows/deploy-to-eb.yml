@@ -18,14 +18,14 @@ jobs:
       - name: Generate deployment.zip
         run: zip -r deployment.zip docker-compose.yml  # zip is unnecessary if only deploying a docker-compose.yml file to EB
       - name: Deploy to Elastic Beanstalk
-        if: ${{ false }}
+        if: ${{ true }}
         uses: einaregilsson/beanstalk-deploy@v14
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: ap-southeast-2
-          application_name: ${{ secrets.AWS_APPLICATION_NAME }}
-          environment_name: ${{ secrets.AWS_ENVIRONMENT_NAME }}
+          application_name: foundryvtt
+          environment_name: Foundryvtt-env
           version_label: $GITHUB_RUN_NUMBER
           version_description: ${{ github.SHA }}
           deployment_package: deployment.zip
