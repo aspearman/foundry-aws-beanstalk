@@ -28,7 +28,7 @@ services:
 #     ports:
 #     - "8080:80"
     static-website:
-      image: docker.pkg.github.com/aspearman/static-website/static-website:0.1.0
+      image: ghcr.io/aspearman/static-website:1.0.0
       container_name: static-website
       ports:
         - "80:80"
