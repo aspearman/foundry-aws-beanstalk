@@ -14,6 +14,7 @@ jobs:
       - name: Check-out commit
         uses: actions/checkout@v2
       - name: Validate docker-compose.yml
+        if: false
         run: docker-compose config --quiet
       - name: Generate deployment.zip
         run: zip -r deployment.zip docker-compose.yml  # zip is unnecessary if only deploying a docker-compose.yml file to EB
