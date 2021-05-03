@@ -1,18 +1,18 @@
 version: '3.8'
 services:
-  foundry:
-    image: felddy/foundryvtt:0.7
-    container_name: foundry
-    restart: unless-stopped
-#    env_file: foundry.env
-    ports:
-      - "30000:30000"
-    env_file:
-      - .env
-#    volumes:
-#      - ./foundry/data:/data
-#  static-website:
-#    image: ghcr.io/aspearman/static-website:1.0.0
-#    container_name: static-website
-#    ports:
-#      - "80:80"
+#   foundry:
+#     image: felddy/foundryvtt:0.7
+#     container_name: foundry
+#     restart: unless-stopped
+# #    env_file: foundry.env
+#     ports:
+#       - "30000:30000"
+#     env_file:
+#       - .env
+# #    volumes:
+# #      - ./foundry/data:/data
+ static-website:
+   image: ghcr.io/aspearman/static-website:1.0.0
+   container_name: static-website
+   ports:
+     - "80:80"
