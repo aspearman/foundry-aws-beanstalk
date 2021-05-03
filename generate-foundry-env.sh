@@ -34,8 +34,8 @@ fi
 # Write env var values to file
 touch "$filename"
 cat <<EOF >"$filename"
-ADMIN_KEY=$admin_key
-PASSWORD=$password
+FOUNDRY_ADMIN_KEY=$admin_key
+FOUNDRY_PASSWORD=$password
 TIMEZONE=$timezone
-USERNAME=$username
+FOUNDRY_USERNAME=$username
 EOF
