@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     env_file: foundry.env
     ports:
-      - "30000:30000"
+      - "80:30000"
 #    volumes:
 #      - ./foundry/data:/data
 #  static-website:
