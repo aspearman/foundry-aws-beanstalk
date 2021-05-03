@@ -14,8 +14,15 @@ jobs:
     steps:
       - name: Check-out commit
         uses: actions/checkout@v2
+      - name: Write .env file
+        run: >
+          ./generate-foundry-env.sh
+          -k ${{ secrets.FOUNDRY_ADMIN_KEY }}
+          -p ${{ secrets.FOUNDRY_PASSWORD }}
+          -t ${{ secrets.FOUNDRY_TIMEZONE }}
+          -u ${{ secrets.FOUNDRY_USERNAME }}
       - name: Validate docker-compose.yml
-        if: false
+#        if: false
         run: docker-compose config --quiet
       - name: Generate deployment.zip
         run: zip -r deployment.zip docker-compose.yml  # zip is unnecessary if only deploying a docker-compose.yml file to EB
