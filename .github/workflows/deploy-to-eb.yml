@@ -9,6 +9,7 @@ on:
 jobs:
   deploy:
     name: Deploy to Elastic Beanstalk
+    environment: Elastic Beanstalk
     runs-on: ubuntu-latest
     steps:
       - name: Check-out commit
