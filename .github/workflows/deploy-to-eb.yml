@@ -9,9 +9,7 @@ on:
 jobs:
   deploy:
     name: Deploy to Elastic Beanstalk
-    environment: 
-      name: Elastic Beanstalk
-      url: ${{ secrets.DEPLOYMENT_URL }}
+    environment: Elastic Beanstalk
     runs-on: ubuntu-latest
     steps:
       - name: Check-out commit
