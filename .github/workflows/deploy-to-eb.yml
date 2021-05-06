@@ -23,7 +23,7 @@ jobs:
       - name: Validate docker-compose.yml
         run: docker-compose config --quiet
       - name: Generate deployment.zip
-        run: zip deployment.zip docker-compose.yml *.env
+        run: zip -r deployment.zip docker-compose.yml *.env .ebextensions/
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v14
         with:
