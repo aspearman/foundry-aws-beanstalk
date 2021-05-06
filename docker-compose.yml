@@ -11,11 +11,11 @@ services:
       - 80:30000
     volumes:
       - ./efs/foundry/data:/data
-# static-website:
-#   image: ghcr.io/aspearman/static-website:1.0.0
-#   container_name: static-website
-#   expose:
-#     - 80
+#  static-website:
+#    image: ghcr.io/aspearman/static-website:1.0.0
+#    container_name: static-website
+#    expose:
+#      - 80
 #  nginx:
 #    image: nginx:latest
 #    container_name: nginx
