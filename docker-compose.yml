@@ -9,8 +9,8 @@ services:
 #      - 30000
     ports:
       - 80:30000
-#    volumes:
-#      - ./foundry/data:/data
+    volumes:
+      - ./foundry/data:/data
 # static-website:
 #   image: ghcr.io/aspearman/static-website:1.0.0
 #   container_name: static-website
