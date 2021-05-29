@@ -9,13 +9,13 @@ services:
     ports:
       - 80:80
 #      - 443:443
-#  foundry:
-#    image: felddy/foundryvtt:0.7
-#    container_name: foundry
-#    restart: unless-stopped
-#    env_file: foundry.env
-#    expose:
-#      - 30000
+  foundry:
+    image: felddy/foundryvtt:0.7
+    container_name: foundry
+    restart: unless-stopped
+    env_file: foundry.env
+    expose:
+      - 30000
 #    ports:
 #      - 80:30000
 #    volumes:
