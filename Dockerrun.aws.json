@@ -1,0 +1,13 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "felddy/foundryvtt:0.7",
+    "Update": "false"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "30000",
+      "HostPort": "80"
+    }
+  ]
+}
