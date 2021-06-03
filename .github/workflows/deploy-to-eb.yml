@@ -23,12 +23,12 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-southeast-2
+          aws-region: ${{ secrets.AWS_EB_REGION }}
       - name: Initialize EB CLI
-        run: eb init foundryvtt --platform docker --region ap-southeast-2
+        run: eb init ${{ secrets.AWS_EB_APPLICATION_NAME }} --platform docker --region ${{ secrets.AWS_EB_REGION }}
       - name: Set EB environment
-        run: (eb use Foundryvtt-env && eb status Foundryvtt-env) # || eb create Foundryvtt-env
+        run: (eb use ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} && eb status ${{ secrets.AWS_EB_ENVIRONMENT_NAME }}) || eb create ${{ secrets.AWS_EB_ENVIRONMENT_NAME }}
       - name: Set environment variables
         run: eb setenv FOUNDRY_USERNAME=${{ secrets.FOUNDRY_USERNAME }} FOUNDRY_PASSWORD=${{ secrets.FOUNDRY_PASSWORD }} FOUNDRY_ADMIN_KEY=${{ secrets.FOUNDRY_ADMIN_KEY }} TIMEZONE=${{ secrets.FOUNDRY_TIMEZONE }}
       - name: Deploy
-        run: eb deploy Foundryvtt-env --label "Commit ${{ github.SHA }}" --message "GitHub Actions run number ${{ github.RUN_NUMBER }}"
+        run: eb deploy ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} --label "Commit ${{ github.SHA }}" --message "GitHub Actions run ${{ github.RUN_NUMBER }}"
