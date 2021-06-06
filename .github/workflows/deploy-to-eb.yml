@@ -26,9 +26,9 @@ jobs:
           aws-region: ${{ secrets.AWS_EB_REGION }}
       - name: Initialize EB CLI
         run: eb init ${{ secrets.AWS_EB_APPLICATION_NAME }} --platform docker --region ${{ secrets.AWS_EB_REGION }}
-      - name: Set EB environment
-        run: (eb use ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} && eb status ${{ secrets.AWS_EB_ENVIRONMENT_NAME }}) || eb create ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} --process --instance_type t2.micro --single
+      - name: Set or create EB environment
+        run: eb use ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} || eb create ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} --instance_type t2.micro --single
+      - name: Deploy
+        run: eb deploy ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} --label "Commit ${{ github.SHA }}" --message "GitHub Actions run ${{ github.RUN_NUMBER }}" --process
       - name: Set environment variables
         run: eb setenv FOUNDRY_USERNAME=${{ secrets.FOUNDRY_USERNAME }} FOUNDRY_PASSWORD=${{ secrets.FOUNDRY_PASSWORD }} FOUNDRY_ADMIN_KEY=${{ secrets.FOUNDRY_ADMIN_KEY }} TIMEZONE=${{ secrets.FOUNDRY_TIMEZONE }}
-      - name: Deploy
-        run: eb deploy ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} --label "Commit ${{ github.SHA }}" --message "GitHub Actions run ${{ github.RUN_NUMBER }}"
