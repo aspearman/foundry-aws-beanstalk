@@ -2,7 +2,7 @@
 
 **WORK IN PROGRESS**
 
-This repository contains the necessary infrastructure-as-code files and pipelines to deploy [Foundry Virtual Tabletop](https://github.com/felddy/foundryvtt-docker) to Elastic Beanstalk using Docker compose. 
+This repository contains the necessary infrastructure-as-code files and pipelines to deploy [Foundry Virtual Tabletop](https://github.com/felddy/foundryvtt-docker) to Elastic Beanstalk. 
 
 ## Running locally
 Running locally can help catch some errors before deployment. 
