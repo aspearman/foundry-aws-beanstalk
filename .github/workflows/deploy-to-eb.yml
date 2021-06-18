@@ -29,7 +29,7 @@ jobs:
       - name: Set or create EB environment
         run: |
           eb use ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} || \
-          eb create ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} --process
+          eb create ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} --process && eb use ${{ secrets.AWS_EB_ENVIRONMENT_NAME }}
       - name: Set environment variables
         run: |
           eb setenv \
