@@ -35,8 +35,7 @@ jobs:
           eb setenv \
           FOUNDRY_USERNAME=${{ secrets.FOUNDRY_USERNAME }} \
           FOUNDRY_PASSWORD=${{ secrets.FOUNDRY_PASSWORD }} \
-          FOUNDRY_ADMIN_KEY=${{ secrets.FOUNDRY_ADMIN_KEY }} \
-          TIMEZONE=${{ secrets.FOUNDRY_TIMEZONE }}
+          FOUNDRY_ADMIN_KEY=${{ secrets.FOUNDRY_ADMIN_KEY }}
       - name: Deploy
         run: |
           eb deploy ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} \
