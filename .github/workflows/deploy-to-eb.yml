@@ -32,11 +32,7 @@ jobs:
           eb create ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} --process && eb use ${{ secrets.AWS_EB_ENVIRONMENT_NAME }}
       - name: Set environment variables
         run: |
-          eb setenv FOUNDRY_USERNAME=$USERNAME FOUNDRY_PASSWORD=$PASSWORD FOUNDRY_ADMIN_KEY=$ADMIN_KEY
-        env:
-          USERNAME: ${{ secrets.FOUNDRY_USERNAME }}
-          PASSWORD: ${{ secrets.FOUNDRY_PASSWORD }}
-          ADMIN_KEY: ${{ secrets.FOUNDRY_ADMIN_KEY }}
+          eb setenv FOUNDRY_USERNAME=${{ secrets.FOUNDRY_USERNAME }} FOUNDRY_PASSWORD=${{ secrets.FOUNDRY_PASSWORD }} FOUNDRY_ADMIN_KEY=${{ secrets.FOUNDRY_ADMIN_KEY }}
       - name: Deploy
         run: |
           eb deploy ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} \
