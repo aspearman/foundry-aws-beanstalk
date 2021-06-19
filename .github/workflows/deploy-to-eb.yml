@@ -34,6 +34,7 @@ jobs:
         run: |
           eb setenv FOUNDRY_USERNAME=${{ secrets.FOUNDRY_USERNAME }} FOUNDRY_PASSWORD=${{ secrets.FOUNDRY_PASSWORD }} FOUNDRY_ADMIN_KEY=${{ secrets.FOUNDRY_ADMIN_KEY }}
       - name: Deploy
+        if: ${{ false }}
         run: |
           eb deploy ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} \
           --label "Commit ${{ github.SHA }}" \
