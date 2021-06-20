@@ -25,11 +25,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_EB_REGION }}
       - name: Initialize EB CLI
-        run: eb init ${{ secrets.AWS_EB_APPLICATION_NAME }} --platform docker --region ${{ secrets.AWS_EB_REGION }}
+        run: |
+          eb init ${{ secrets.AWS_EB_APPLICATION_NAME }} \
+          --platform docker \
+          --region ${{ secrets.AWS_EB_REGION }}
       - name: Set or create EB environment
         run: |
-          eb use ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} || \
-          eb create ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} --process && eb use ${{ secrets.AWS_EB_ENVIRONMENT_NAME }}
+          eb use $env-name || \
+          eb create $env-name --process && eb use $env-name
+        env:
+          env-name: ${{ secrets.AWS_EB_ENVIRONMENT_NAME }}
       - name: Deploy
         run: |
           eb deploy ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} \
