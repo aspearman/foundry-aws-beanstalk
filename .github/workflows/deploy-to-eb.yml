@@ -30,12 +30,15 @@ jobs:
         run: |
           eb use ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} || \
           eb create ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} --process && eb use ${{ secrets.AWS_EB_ENVIRONMENT_NAME }}
-      - name: Set environment variables
-        run: |
-          eb setenv FOUNDRY_USERNAME=${{ secrets.FOUNDRY_USERNAME }} FOUNDRY_PASSWORD=${{ secrets.FOUNDRY_PASSWORD }} FOUNDRY_ADMIN_KEY=${{ secrets.FOUNDRY_ADMIN_KEY }}
       - name: Deploy
         run: |
           eb deploy ${{ secrets.AWS_EB_ENVIRONMENT_NAME }} \
           --label "Commit ${{ github.SHA }}" \
           --message "GitHub Actions run ${{ github.RUN_NUMBER }}" \
           --process
+      - name: Set environment variables
+        run: |
+          eb setenv \
+          FOUNDRY_USERNAME=${{ secrets.FOUNDRY_USERNAME }} \
+          FOUNDRY_PASSWORD=${{ secrets.FOUNDRY_PASSWORD }} \
+          FOUNDRY_ADMIN_KEY=${{ secrets.FOUNDRY_ADMIN_KEY }}
