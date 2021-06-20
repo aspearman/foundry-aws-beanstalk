@@ -31,8 +31,8 @@ jobs:
           --region ${{ secrets.AWS_EB_REGION }}
       - name: Set or create EB environment
         run: |
-          eb use $env-name || \
-          eb create $env-name --process && eb use $env-name
+          eb use ${env-name} || \
+          eb create ${env-name} --process && eb use ${env-name}
         env:
           env-name: ${{ secrets.AWS_EB_ENVIRONMENT_NAME }}
       - name: Deploy
