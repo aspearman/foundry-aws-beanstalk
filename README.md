@@ -21,4 +21,6 @@ First, AWS is cheap and has a reasonably generous free tier.
 
 Secondly, you might be wondering why not ECS or CloudFormation or some other technology. I found those to be overkill for this deployment and would present a high bar to entry for those making their first deployment to AWS. Furthermore, Elastic Beanstalk appears to be CloudFormation in disguise, but with many sensible defaults. This has two benefits: 1) we can rely on the sensible defaults for most of our values, while declaring in code (IAC) what the configuration should be since all it is doing is overriding the CloudFormation configuration, leading to easily reproducible environments, and 2) with sensible defaults, the only code needed in this repo is anything that differs from the sensible defaults, which isn't much, leading to this repo being easier to understand for newcomers. 
 
+I attempted to use Lightsail but it 1) doesn't support mounting a filesystem to a container and 2) as far as I can tell can't be configured using code, only UI. 
+
 I also wanted to learn more about AWS and this was one way to do that. 
