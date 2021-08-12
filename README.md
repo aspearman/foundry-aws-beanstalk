@@ -1,8 +1,11 @@
 # Foundry VTT on AWS Elastic Beanstalk
-
-**WORK IN PROGRESS**
-
 This repository contains the necessary infrastructure-as-code files and pipelines to deploy [Foundry Virtual Tabletop](https://github.com/felddy/foundryvtt-docker) to Elastic Beanstalk. 
+
+## Project Status
+**🏗️ WORK IN PROGRESS 🏗️**
+
+In its current state, forking this repo and setting env vars in GitHub Environments lets you deploy the container to EB, 
+but with no persistent file storage or secure public URL. 
 
 ## Running locally
 Running locally can help catch some errors before deployment. 
