@@ -2,7 +2,9 @@
 This repository contains the necessary infrastructure-as-code files and pipelines to continuously deploy [Foundry Virtual Tabletop](https://github.com/felddy/foundryvtt-docker) to Elastic Beanstalk. 
 
 ## Project Status
-**🏗️ WORK IN PROGRESS 🏗️**
+**❌ ABANDONED ❌** in favor of [aspearman/foundry-aws](https://github.com/aspearman/foundry-aws)
+
+Beanstalk is not the right tool for this. Copilot (or CDK) is less painful. 
 
 In its current state, forking this repo and setting env vars in GitHub Environments lets you continuously deploy the container to EB, 
 but with no persistent file storage or secure public URL. 
